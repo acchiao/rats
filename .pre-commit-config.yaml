@@ -1,13 +1,14 @@
-exclude: '^docs/|/migrations/'
+exclude: "^docs/|/migrations/"
 default_stages: [commit]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-json
+        exclude: .devcontainer/devcontainer.json
       - id: check-toml
       - id: check-xml
       - id: check-yaml
@@ -18,41 +19,41 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+    rev: ffb6a759a979008c0e6dff86e39f4745a2d9eac4 # frozen: v3.1.0
     hooks:
       - id: prettier
-        args: ['--tab-width', '2', '--single-quote']
-        exclude: 'rats/templates/'
+        args: ["--tab-width", "2"]
+        exclude: "rats/templates/"
 
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: '1.15.0'
+    rev: "5353187fa24deb65a87d7428f9538c3958a4edfd" # frozen: 1.15.0
     hooks:
       - id: django-upgrade
-        args: ['--target-version', '4.2']
+        args: ["--target-version", "4.2"]
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.0
+    rev: 1bbebc88c6925a4e56fd5446b830b12c38c1c24a # frozen: v3.15.0
     hooks:
       - id: pyupgrade
         args: [--py311-plus]
 
   - repo: https://github.com/psf/black
-    rev: 23.11.0
+    rev: 2a1c67e0b2f81df602ec1f6e7aeb030b9709dc7c # frozen: 23.11.0
     hooks:
       - id: black
 
   - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
+    rev: dbf82f2dd09ae41d9355bcd7ab69187a19e6bf2f # frozen: 5.12.0
     hooks:
       - id: isort
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0
+    rev: 10f4af6dbcf93456ba7df762278ae61ba3120dc6 # frozen: 6.1.0
     hooks:
       - id: flake8
 
   - repo: https://github.com/Riverside-Healthcare/djLint
-    rev: v1.34.0
+    rev: 2761307bedc5a5cad6b8ee4013dce739b8b5add2 # frozen: v1.34.0
     hooks:
       - id: djlint-reformat-django
       - id: djlint-django
