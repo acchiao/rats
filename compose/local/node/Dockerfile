@@ -1,9 +1,11 @@
-FROM node:18-bullseye-slim
+FROM node:20-bullseye-slim
 
-WORKDIR /app
+ARG APP_HOME=/app
+WORKDIR ${APP_HOME}
 
-COPY ./package.json /app
+COPY ./package.json ./package-lock.json ${APP_HOME}/
 
-RUN npm install && npm cache clean --force
+RUN npm install \
+  && npm cache clean --force
 
 ENV PATH ./node_modules/.bin/:$PATH

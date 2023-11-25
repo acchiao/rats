@@ -1,7 +1,7 @@
 {
   "name": "rats",
   "version": "0.1.0",
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@popperjs/core": "^2.10.2",
@@ -24,7 +24,7 @@
     "webpack-merge": "^5.8.0"
   },
   "engines": {
-    "node": "18"
+    "node": "20"
   },
   "browserslist": [
     "last 2 versions"
