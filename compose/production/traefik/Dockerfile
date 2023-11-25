@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM traefik:2.10.5
 
 RUN mkdir -p /etc/traefik/acme \

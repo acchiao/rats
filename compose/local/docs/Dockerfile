@@ -1,4 +1,4 @@
-# define an alias for the specific python version used in this file.
+# syntax=docker/dockerfile:1
 FROM python:3.11.6-slim-bullseye as python
 
 
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
   # psycopg2 dependencies
   libpq-dev \
   # cleaning up unused files
-  && apt-get purge --yes --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+  && apt-get purge --yes --auto-remove --option APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
 # Requirements are installed here to ensure they will be cached.
@@ -46,7 +46,7 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
   # texlive-latex-extra \
   # latexmk \
   # cleaning up unused files
-  && apt-get purge --yes --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+  && apt-get purge --yes --auto-remove --option APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
 # copy python dependency wheels from python-build-stage

@@ -1,4 +1,4 @@
-# define an alias for the specific python version used in this file.
+# syntax=docker/dockerfile:1
 FROM python:3.11.6-slim-bullseye as python
 
 # Python build stage
@@ -14,14 +14,14 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
   build-essential \
   # psycopg2 dependencies
   libpq-dev \
-  && apt-get purge --yes --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+  && apt-get purge --yes --auto-remove --option APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
 
 # Create Python Dependency and Sub-Dependency Wheels.
-RUN pip wheel --wheel-dir /usr/src/app/wheels \
+RUN pip wheel --no-cache-dir --wheel-dir /usr/src/app/wheels \
   --requirement ${BUILD_ENVIRONMENT}.txt
 
 
@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
   nano \
   ssh \
   sudo \
-  && apt-get purge --yes --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+  && apt-get purge --yes --auto-remove --option APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
 # Create devcontainer user and add it to sudoers
@@ -62,7 +62,7 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
   # Translations dependencies
   gettext \
   # cleaning up unused files
-  && apt-get purge --yes --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+  && apt-get purge --yes --auto-remove --option APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
 # All absolute dir copies ignore workdir instruction. All relative dir copies are wrt to the workdir instruction

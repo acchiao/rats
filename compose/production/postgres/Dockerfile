@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM postgres:15
 
 COPY ./compose/production/postgres/maintenance /usr/local/bin/maintenance

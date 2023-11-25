@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM node:20-bullseye-slim
 
 ARG APP_HOME=/app
