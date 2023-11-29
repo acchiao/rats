@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM traefik:2.10.5
+FROM traefik:v3.0
 
 RUN mkdir -p /etc/traefik/acme \
   && touch /etc/traefik/acme/acme.json \
