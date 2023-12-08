@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:20-bullseye-slim
+FROM node:21-bullseye-slim
 
 ARG APP_HOME=/app
 WORKDIR ${APP_HOME}
